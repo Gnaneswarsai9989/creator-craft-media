@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services — Creator Craft Media</title>
+  <meta name="description" content="Explore Creator Craft Media's professional services — workshops, brand shoots, reels, AI creatives, weddings & more. Based in Nellore, AP." />
+  <link rel="icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & TOKENS ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:  #07070f;
+      --ink1: #0d0d18;
+      --ink2: #12121e;
+      --ink3: #181828;
+      --vi:   #6366f1;
+      --vi2:  #818cf8;
+      --vi3:  #a5b4fc;
+      --cyan: #38bdf8;
+      --am:   #f59e0b;
+      --wh:   #ffffff;
+      --wh2:  #eeeef8;
+      --wh3:  #c4c4dc;
+      --muted:#7070a0;
+      --fh:   'Syne', sans-serif;
+      --fb:   'Plus Jakarta Sans', sans-serif;
+      --ez:   cubic-bezier(0.22,1,0.36,1);
+      --t:    0.28s;
+      --nav-h: 72px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--fb);
+      background: var(--ink);
+      color: var(--wh2);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(7,7,15,0.92);
+      backdrop-filter: blur(20px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan) 20%, var(--vi2) 50%, var(--cyan) 80%, transparent);
+      background-size: 200% 100%;
+      animation: sweep 3s linear infinite;
+    }
+    @keyframes sweep {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 40px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 52px; width: auto; object-fit: contain; }
+    .nav-back {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--fh); font-size: 13px; font-weight: 600;
+      color: var(--cyan); letter-spacing: .04em;
+      transition: gap var(--t);
+    }
+    .nav-back:hover { gap: 12px; }
+    .nav-back span { font-size: 18px; }
+
+    /* ── PAGE WRAPPER ── */
+    .page { padding-top: calc(var(--nav-h) + 40px); }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── HERO HEADER ── */
+    .svc-hero {
+      text-align: center; padding: 60px 0 72px;
+      position: relative;
+    }
+    .svc-hero .eyebrow {
+      display: inline-block;
+      font-family: var(--fh); font-size: 11px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid rgba(56,189,248,0.3);
+      background: rgba(56,189,248,0.08);
+      padding: 5px 18px; border-radius: 30px; margin-bottom: 20px;
+    }
+    .svc-hero h1 {
+      font-family: var(--fh); font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800; color: var(--wh); line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .svc-hero h1 span { color: var(--cyan); }
+    .svc-hero p {
+      font-size: 1.05rem; color: var(--wh3); max-width: 620px; margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── DIVIDER ── */
+    .gd {
+      height: 1px; margin: 0;
+      background: linear-gradient(90deg, transparent, var(--vi2) 30%, var(--cyan) 50%, var(--vi2) 70%, transparent);
+      opacity: 0.4;
+    }
+
+    /* ══════════════════════════════════
+       HERO SERVICE BLOCK — image + text
+    ══════════════════════════════════ */
+    .svc-block {
+      padding: 80px 0;
+    }
+    .svc-block-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .svc-block-inner.reverse { direction: rtl; }
+    .svc-block-inner.reverse > * { direction: ltr; }
+
+    /* Image side */
+    .svc-img-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6),
+                  0 0 0 1px rgba(99,102,241,0.15);
+      position: relative;
+    }
+    .svc-img-wrap img { transition: transform 0.6s var(--ez); }
+    .svc-img-wrap:hover img { transform: scale(1.04); }
+
+    /* Text side */
+    .svc-text {}
+    .svc-text h2 {
+      font-family: var(--fh);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 800; color: var(--wh);
+      margin-bottom: 6px; line-height: 1.2;
+    }
+    .svc-text h2 .emoji { margin-right: 10px; }
+    .svc-text .svc-tagline {
+      font-family: var(--fb); font-size: .95rem; font-weight: 500;
+      color: var(--cyan); margin-bottom: 16px;
+    }
+    .svc-text p {
+      font-size: .97rem; line-height: 1.75; color: var(--wh3);
+      margin-bottom: 24px;
+    }
+
+    /* What We Offer label */
+    .svc-offer-label {
+      font-family: var(--fh); font-size: 13px; font-weight: 700;
+      color: var(--am); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* Feature chips grid */
+    .svc-chips {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-bottom: 20px;
+    }
+    .chip {
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 10px; padding: 9px 12px;
+      font-family: var(--fb); font-size: 12px; font-weight: 500;
+      color: var(--wh2);
+      transition: background var(--t), border-color var(--t);
+    }
+    .chip:hover {
+      background: rgba(99,102,241,0.2);
+      border-color: rgba(99,102,241,0.4);
+    }
+    .chip .chip-icon { font-size: 14px; flex-shrink: 0; }
+
+    /* Who is it for */
+    .svc-for-label {
+      font-family: var(--fh); font-size: 13px; font-weight: 700;
+      color: var(--vi3); margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .svc-for-text {
+      font-size: .88rem; color: var(--wh3); line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .svc-approach {
+      font-size: .85rem; color: var(--muted); font-style: italic;
+      line-height: 1.6;
+      padding: 10px 14px;
+      border-left: 2px solid var(--cyan);
+      background: rgba(56,189,248,0.05);
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* CTA button */
+    .svc-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 24px;
+      font-family: var(--fh); font-size: 13px; font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--vi), #4338ca);
+      padding: 12px 28px; border-radius: 12px; letter-spacing: .04em;
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .svc-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(99,102,241,0.4);
+    }
+
+    /* ══════════════════════════════════
+       IMAGE CARD GRID SECTION
+    ══════════════════════════════════ */
+    .grid-section { padding: 80px 0; }
+    .grid-section-head { margin-bottom: 48px; }
+    .grid-section-head h2 {
+      font-family: var(--fh); font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 800; color: var(--wh); margin-bottom: 8px;
+    }
+    .grid-section-head .underline {
+      width: 56px; height: 3px; border-radius: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--vi2));
+    }
+
+    /* Two-column category split */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    /* Image cards grid inside each category */
+    .img-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .img-card {
+      background: var(--ink2);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform var(--t), border-color var(--t), box-shadow var(--t);
+      cursor: pointer;
+    }
+    .img-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56,189,248,0.3);
+      box-shadow: 0 12px 36px rgba(56,189,248,0.12);
+    }
+    .img-card-img {
+      width: 100%; aspect-ratio: 4/3; overflow: hidden;
+    }
+    .img-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s var(--ez);
+    }
+    .img-card:hover .img-card-img img { transform: scale(1.06); }
+    .img-card-body { padding: 14px 14px 16px; }
+    .img-card-body h4 {
+      font-family: var(--fh); font-size: .95rem; font-weight: 700;
+      color: var(--wh); margin-bottom: 5px;
+    }
+    .img-card-body p {
+      font-size: .8rem; color: var(--wh3); line-height: 1.5;
+    }
+
+    /* Wide card (portfolio — spans full width in personal col) */
+    .img-card.wide {
+      grid-column: 1 / -1;
+    }
+    .img-card.wide .img-card-img { aspect-ratio: 16/6; }
+
+    /* ── FOOTER BAND ── */
+    .svc-footer-band {
+      background: var(--ink1);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 60px 0;
+      text-align: center;
+    }
+    .svc-footer-band h2 {
+      font-family: var(--fh); font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800; color: var(--wh); margin-bottom: 12px;
+    }
+    .svc-footer-band h2 span { color: var(--cyan); }
+    .svc-footer-band p {
+      font-size: .98rem; color: var(--wh3); margin-bottom: 28px;
+    }
+    .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      font-family: var(--fh); font-size: 14px; font-weight: 700;
+      color: #fff; background: linear-gradient(135deg, var(--vi), #4338ca);
+      padding: 14px 32px; border-radius: 14px; letter-spacing: .04em;
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(99,102,241,0.45); }
+    .btn-ghost {
+      font-family: var(--fh); font-size: 14px; font-weight: 600;
+      color: var(--cyan); border: 1px solid rgba(56,189,248,0.35);
+      background: rgba(56,189,248,0.07);
+      padding: 14px 32px; border-radius: 14px; letter-spacing: .04em;
+      transition: background var(--t), border-color var(--t);
+    }
+    .btn-ghost:hover { background: rgba(56,189,248,0.15); border-color: rgba(56,189,248,0.6); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .svc-block-inner { grid-template-columns: 1fr; gap: 32px; }
+      .svc-block-inner.reverse { direction: ltr; }
+      .dual-grid { grid-template-columns: 1fr; gap: 48px; }
+      .container { padding: 0 20px; }
+    }
+    @media (max-width: 600px) {
+      .img-cards { grid-template-columns: 1fr; }
+      .img-card.wide { grid-column: auto; }
+      .svc-chips { grid-template-columns: 1fr; }
+      .nav-inner { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="Creator Craft Media" />
+      </a>
+      <a href="index.html" class="nav-back">
+        <span>←</span> Back to Home
+      </a>
+    </div>
+  </header>
+
+  <div class="page">
+
+    <!-- ── HERO HEADER ── -->
+    <section class="svc-hero">
+      <div class="container">
+        <div class="eyebrow">What We Offer</div>
+        <h1>Our <span>Services</span></h1>
+        <p>Professional content solutions for brands, creators, and businesses — built to drive real results across every platform.</p>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ══════════════════════════════════
+         BLOCK 1 — Workshops & Training
+    ══════════════════════════════════ -->
+    <section class="svc-block">
+      <div class="container">
+        <div class="svc-block-inner">
+
+          <!-- Left: Image -->
+          <div class="svc-img-wrap">
+            <img src="images/svc_workshop.jpg" alt="Workshops & Creator Training Labs" loading="lazy" />
+          </div>
+
+          <!-- Right: Text -->
+          <div class="svc-text">
+            <h2><span class="emoji">🎓</span>Workshops &amp; Creator Training Labs</h2>
+            <p class="svc-tagline">Hands-on, Practical, Industry-Ready Training</p>
+            <p>At Creator Craft Media, our Workshops &amp; Creator Training Labs are designed to transform passionate individuals into confident digital creators. We don't just teach theory — we provide hands-on, practical training.</p>
+
+            <div class="svc-offer-label">🔥 What We Offer:</div>
+            <div class="svc-chips">
+              <div class="chip"><span class="chip-icon">🎬</span>Practical Video Editing Training</div>
+              <div class="chip"><span class="chip-icon">📱</span>Social Media Content Strategy</div>
+              <div class="chip"><span class="chip-icon">🤖</span>AI Tools for Smart Content Creation</div>
+              <div class="chip"><span class="chip-icon">💡</span>Personal Branding &amp; Digital Growth</div>
+              <div class="chip"><span class="chip-icon">📷</span>Camera Handling &amp; Production</div>
+              <div class="chip"><span class="chip-icon">💰</span>Content Monetization Strategies</div>
+            </div>
+
+            <div class="svc-for-label">🎯 Who Is It For?</div>
+            <p class="svc-for-text">Aspiring Content Creators • Influencers &amp; Personal Brands • Business Owners • Students &amp; Media Enthusiasts • Entrepreneurs</p>
+
+            <p class="svc-approach">🚀 Our Approach: Learn → Create → Execute → Grow. Every session is interactive, action-oriented, and focused on real implementation.</p>
+
+            <a href="tel:9700505046" class="svc-cta">📞 Book a Session</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ══════════════════════════════════
+         BLOCK 2 — Brand Promotional Shoots
+    ══════════════════════════════════ -->
+    <section class="svc-block">
+      <div class="container">
+        <div class="svc-block-inner reverse">
+
+          <!-- Left: Text (reversed visually to right) -->
+          <div class="svc-text">
+            <h2><span class="emoji">🎯</span>Brand Promotional Shoots</h2>
+            <p class="svc-tagline">Brand Promotions That Create Buzz &amp; Build Trust</p>
+            <p>At Creator Craft Media, we turn brands into experiences. Through engaging content, powerful visuals, and targeted digital strategies, we help businesses increase visibility, boost engagement, and grow sales.</p>
+
+            <div class="svc-offer-label">🔥 What We Deliver:</div>
+            <div class="svc-chips">
+              <div class="chip"><span class="chip-icon">🎬</span>Short Reels &amp; Video Ads</div>
+              <div class="chip"><span class="chip-icon">📸</span>Cinematic Product Shoots</div>
+              <div class="chip"><span class="chip-icon">🏠</span>Property Walkthrough Videos</div>
+              <div class="chip"><span class="chip-icon">📊</span>Meta &amp; Google Ad Campaigns</div>
+              <div class="chip"><span class="chip-icon">📈</span>Social Media Growth Strategy</div>
+              <div class="chip"><span class="chip-icon">🤖</span>AI Creative Content</div>
+            </div>
+
+            <div class="svc-for-label">🎯 Who Is It For?</div>
+            <p class="svc-for-text">Restaurants &amp; Cafes • Real Estate Developers • Retail Shops • Healthcare &amp; Clinics • Startups &amp; SMEs • E-commerce Brands</p>
+
+            <p class="svc-approach">📌 We handle everything — scripting, shooting, editing, and publishing — so you focus on your business while we build your brand.</p>
+
+            <a href="tel:9700505046" class="svc-cta">📞 Get a Quote</a>
+          </div>
+
+          <!-- Right: Image -->
+          <div class="svc-img-wrap">
+            <img src="images/svc_brandpromo.jpg" alt="Brand Promotional Shoots" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ══════════════════════════════════
+         IMAGE CARD GRID
+    ══════════════════════════════════ -->
+    <section class="grid-section">
+      <div class="container">
+        <div class="dual-grid">
+
+          <!-- ── LEFT: Business Brand Promotion ── -->
+          <div>
+            <div class="grid-section-head">
+              <h2>Business Brand Promotion</h2>
+              <div class="underline"></div>
+            </div>
+            <div class="img-cards">
+
+              <div class="img-card">
+                <div class="img-card-img"><img src="images/svc_short_reels.jpg" alt="Short Reels" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>Short Reels</h4>
+                  <p>Scroll-stopping short-form content for maximum engagement.</p>
+                </div>
+              </div>
+
+              <div class="img-card">
+                <div class="img-card-img"><img src="images/svc_cinematic.jpg" alt="Cinematic Shoots" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>Cinematic Shoots</h4>
+                  <p>Professional cinematic videography for your brand.</p>
+                </div>
+              </div>
+
+              <div class="img-card">
+                <div class="img-card-img"><img src="images/svc_walkthrough.jpg" alt="Walkthrough Videos" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>Walkthrough Videos</h4>
+                  <p>Detailed property and business walkthrough content.</p>
+                </div>
+              </div>
+
+              <div class="img-card">
+                <div class="img-card-img"><img src="images/svc_ai.jpg" alt="AI Creatives" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>AI Creatives</h4>
+                  <p>AI-powered creative designs and visual content.</p>
+                </div>
+              </div>
+
+              <div class="img-card">
+                <div class="img-card-img"><img src="images/svc_ads.jpg" alt="Meta & Google Ads" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>Meta &amp; Google Ads</h4>
+                  <p>Data-driven ad campaigns for maximum ROI.</p>
+                </div>
+              </div>
+
+              <div class="img-card">
+                <div class="img-card-img"><img src="images/svc_social.jpg" alt="Social Media Growth" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>Social Media Growth</h4>
+                  <p>Complete social media management and growth.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── RIGHT: Personal Shoots & Reels ── -->
+          <div>
+            <div class="grid-section-head">
+              <h2>Personal Shoots &amp; Reels</h2>
+              <div class="underline"></div>
+            </div>
+            <div class="img-cards">
+
+              <div class="img-card">
+                <div class="img-card-img"><img src="images/svc_prewedding.jpg" alt="Pre-wedding Shoots" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>Pre-wedding Shoots</h4>
+                  <p>Cinematic pre-wedding films and photo shoots.</p>
+                </div>
+              </div>
+
+              <div class="img-card">
+                <div class="img-card-img"><img src="images/svc_couple.jpg" alt="Couple Reels" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>Couple Reels</h4>
+                  <p>Beautiful couple content for social media.</p>
+                </div>
+              </div>
+
+              <div class="img-card">
+                <div class="img-card-img"><img src="images/svc_moments.jpg" alt="Special Moments" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>Special Moments</h4>
+                  <p>Capturing your most precious life moments.</p>
+                </div>
+              </div>
+
+              <div class="img-card">
+                <div class="img-card-img"><img src="images/svc_branding.jpg" alt="Personal Branding" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>Personal Branding</h4>
+                  <p>Build your personal brand with professional content.</p>
+                </div>
+              </div>
+
+              <div class="img-card wide">
+                <div class="img-card-img"><img src="images/svc_portfolio.jpg" alt="Portfolio Shoots" loading="lazy" /></div>
+                <div class="img-card-body">
+                  <h4>Portfolio Shoots</h4>
+                  <p>Professional portfolio shoots for creatives.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER CTA ── -->
+    <div class="svc-footer-band">
+      <div class="container">
+        <h2>Ready to Build Your <span>Brand?</span></h2>
+        <p>Call us today and let's create something extraordinary together.</p>
+        <div class="btn-group">
+          <a href="tel:9700505046" class="btn-primary">📞 Call: 9700505046</a>
+          <a href="index.html" class="btn-ghost">← Back to Home</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /page -->
+</body>
+</html>

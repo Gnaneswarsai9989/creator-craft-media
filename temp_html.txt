@@ -1,0 +1,154 @@
+      <div class="course-grid">
+        <!-- Course 1 -->
+        <div class="cc reveal">
+          <div class="cc-bg-glow"></div>
+          <div class="cc-num">01</div>
+          <div class="cc-top-bar">
+            <div class="cc-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17\"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+            </div>
+            <div class="cc-badge">20% OFF</div>
+          </div>
+          <div class="cc-content">
+            <h3 class="cc-title">Cinematic Shoot Mastery</h3>
+            <p class="cc-sub">iPhone Cinematography</p>
+            <ul class="cc-points">
+              <li>Pro-level iPhone shooting techniques</li>
+              <li>Gimbal handling &amp; cinematic transitions</li>
+              <li>Lighting setup &amp; moodboard creation</li>
+              <li>Viral reel scripting &amp; storytelling</li>
+              <li>Live on-location practical sessions</li>
+            </ul>
+          </div>
+          <div class="cc-foot">
+            <div class="cc-price-wrap">
+              <div class="cc-price"><span class="cc-now">₹9,999</span><span class="cc-was">₹11,999</span></div>
+              <div class="cc-meta"><span>⏱ 8 Days</span><span>📍 Offline</span></div>
+            </div>
+            <a href="tel:9700505046" class="cc-enroll">Enroll Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="cc reveal">
+          <div class="cc-bg-glow"></div>
+          <div class="cc-num">02</div>
+          <div class="cc-top-bar">
+            <div class="cc-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
+            </div>
+            <div class="cc-badge">20% OFF</div>
+          </div>
+          <div class="cc-content">
+            <h3 class="cc-title">Pro-Level Editing Mastery</h3>
+            <p class="cc-sub">CapCut &amp; Professional Tools</p>
+            <ul class="cc-points">
+              <li>Color grading &amp; cinematic effects</li>
+              <li>Viral reel editing formulas</li>
+              <li>Beat-synced transitions</li>
+              <li>YouTube &amp; short-form optimization</li>
+              <li>Build a professional editing portfolio</li>
+            </ul>
+          </div>
+          <div class="cc-foot">
+            <div class="cc-price-wrap">
+              <div class="cc-price"><span class="cc-now">₹7,999</span><span class="cc-was">₹9,999</span></div>
+              <div class="cc-meta"><span>⏱ 8 Days</span><span>📍 Offline</span></div>
+            </div>
+            <a href="tel:9700505046" class="cc-enroll">Enroll Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="cc reveal">
+          <div class="cc-bg-glow"></div>
+          <div class="cc-num">03</div>
+          <div class="cc-top-bar">
+            <div class="cc-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div class="cc-badge">25% OFF</div>
+          </div>
+          <div class="cc-content">
+            <h3 class="cc-title">AI Film-Making</h3>
+            <p class="cc-sub">Future of Content Creation</p>
+            <ul class="cc-points">
+              <li>Higgsfield, Runway &amp; Kling AI tools</li>
+              <li>Text-to-video AI production</li>
+              <li>AI scripting &amp; prompting mastery</li>
+              <li>Combine real footage with AI</li>
+              <li>Build your AI video agency</li>
+            </ul>
+          </div>
+          <div class="cc-foot">
+            <div class="cc-price-wrap">
+              <div class="cc-price"><span class="cc-now">₹8,999</span><span class="cc-was">₹11,999</span></div>
+              <div class="cc-meta"><span>⏱ 8 Days</span><span>📍 Offline</span></div>
+            </div>
+            <a href="tel:9700505046" class="cc-enroll">Enroll Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          </div>
+        </div>
+
+        <!-- Course 4 -->
+        <div class="cc reveal">
+          <div class="cc-bg-glow"></div>
+          <div class="cc-num">04</div>
+          <div class="cc-top-bar">
+            <div class="cc-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            </div>
+            <div class="cc-badge">20% OFF</div>
+          </div>
+          <div class="cc-content">
+            <h3 class="cc-title">Canva &amp; Digital Marketing</h3>
+            <p class="cc-sub">Design. Promote. Earn.</p>
+            <ul class="cc-points">
+              <li>Canva design for social media</li>
+              <li>Logos, banners &amp; branding creatives</li>
+              <li>Instagram growth strategies</li>
+              <li>Facebook &amp; Instagram paid ads</li>
+              <li>Lead generation campaigns</li>
+            </ul>
+          </div>
+          <div class="cc-foot">
+            <div class="cc-price-wrap">
+              <div class="cc-price"><span class="cc-now">₹6,999</span><span class="cc-was">₹8,999</span></div>
+              <div class="cc-meta"><span>⏱ 8 Days</span><span>📍 Offline</span></div>
+            </div>
+            <a href="tel:9700505046" class="cc-enroll">Enroll Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FLAGSHIP -->
+      <div class="flagship-card reveal">
+        <div class="fl-bg-glow"></div>
+        <div class="fl-ribbon">⭐ Best Value — 40% OFF</div>
+        <div class="fl-inner">
+          <div class="fl-left">
+            <div class="fl-num">05</div>
+            <h3 class="fl-title">The Content Creator Program</h3>
+            <p class="fl-sub">All 4 Courses + Real-Time Projects Experience</p>
+            <div class="fl-includes">
+              <span>✅ Cinematic Shoot Mastery</span>
+              <span>✅ Pro-Level Editing</span>
+              <span>✅ AI Film-Making</span>
+              <span>✅ Canva &amp; Digital Marketing</span>
+              <span>✅ Real-Time Projects</span>
+            </div>
+          </div>
+          <div class="fl-right">
+            <div class="fl-price">
+              <div class="fl-now">₹19,999</div>
+              <div class="fl-was">₹34,999</div>
+            </div>
+            <p class="fl-desc" style="color:var(--wh3); font-size:14px; margin-bottom:24px; line-height:1.6;">Become a complete professional content creator — industry-ready with portfolio, certificate, and real project experience.</p>
+            <div class="fl-meta">
+              <span>⏱ 30 Days</span>
+              <span>📍 Offline Lab</span>
+              <span>📜 Master Certificate</span>
+            </div>
+            <a href="tel:9700505046" class="fl-enroll">🔥 Claim Offer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creator Craft Media | Shoot · Edit · Earn · Iconic</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne+Mono&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- CURSOR -->
+  <div class="cur" id="cur"></div>
+  <div class="cur-ring" id="curRing"></div>
+
+  <!-- BG CANVAS -->
+  <canvas id="bgCanvas"></canvas>
+  <div class="noise"></div>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/919700505046?text=Hi%2C%20I%20want%20to%20know%20more%20about%20your%20courses"
+    class="wa-float" target="_blank" id="waBtn" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+      <path
+        d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.123 1.532 5.855L.054 23.454a.5.5 0 00.492.546h.044l5.736-1.503A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.82 9.82 0 01-5.006-1.369l-.358-.214-3.712.973.99-3.617-.234-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z" />
+    </svg>
+  </a>
+
+  <!-- ══════════ NAVBAR ══════════ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-brand">
+        <img src="logo.png" alt="Creator Craft Media" class="nav-logo-img" />
+      </a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="#home"         class="nl">Home</a>
+        <a href="#about"        class="nl">About</a>
+        <a href="#founders"     class="nl">Team</a>
+        <a href="services.html"    class="nl">Services</a>
+        <a href="#courses"      class="nl">Courses</a>
+        <a href="#testimonials" class="nl">Testimonials</a>
+        <a href="#contact"      class="nl">Contact</a>
+        <a href="tel:9700505046" class="nav-btn">Enroll Now</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mob-overlay" id="mobOverlay"></div>
+
+  <!-- MOBILE NAV — Floating card, slides from left -->
+  <div class="mob-nav-panel" id="mobNavPanel">
+    <div class="nav-bg-anim" aria-hidden="true">
+      <span class="nb nb1"></span><span class="nb nb2"></span>
+      <span class="nb nb3"></span><span class="nb nb4"></span>
+      <span class="sp sp1"></span><span class="sp sp2"></span>
+      <span class="sp sp3"></span><span class="sp sp4"></span>
+      <span class="sp sp5"></span>
+    </div>
+
+    <!-- Logo left · Close right -->
+    <div class="mob-nav-head">
+      <img src="logo.png" alt="Creator Craft" class="mob-logo-img" />
+      <button class="mob-nav-close" id="mobNavClose" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6"  y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Centered nav links -->
+    <nav class="mob-nav-links">
+      <a href="#home"          class="msl active-link">Home</a>
+      <a href="#about"         class="msl">About Us</a>
+      <a href="#courses"       class="msl">Our Courses</a>
+      <a href="services.html"    class="msl">Services</a>
+      <a href="#testimonials"  class="msl">Testimonials</a>
+      <a href="#contact"       class="msl">Contact</a>
+    </nav>
+  </div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" id="home">
+    <div class="hero-glow g1"></div>
+    <div class="hero-glow g2"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="dot-live"></span>
+          Nellore's #1 Creator Lab
+        </div>
+        <h1 class="hero-h1">
+          <span class="hl">TURN YOUR</span>
+          <span class="hl">MOBILE INTO</span>
+          <span class="hl">A <em class="glow-word">CAREER.</em></span>
+        </h1>
+        <p class="hero-p">Nellore's first Content Creation &amp; AI Film-Making Lab — built by creators working with
+          <strong>Top 50+ Brands</strong>. Industry-ready skills in just <strong>8 days</strong>.
+        </p>
+        <div class="hero-btns">
+          <a href="#courses" class="btn-vi" style="background: #6D74FC; border-radius: 16px; padding: 18px 32px; font-size: 15px; font-weight: 700; letter-spacing: 0.02em; border: none; box-shadow: none;">
+            View Courses
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style="margin-left: 2px;">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="tel:9700505046" class="btn-ghost" style="border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 18px 32px; font-size: 15px; font-weight: 700; letter-spacing: 0.02em; box-shadow: none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            9700505046
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hs">
+            <div class="hs-n"><span class="cnt" data-to="50">0</span>+</div>
+            <div class="hs-l">Brands</div>
+          </div>
+          <div class="hs">
+            <div class="hs-n"><span class="cnt" data-to="5">0</span></div>
+            <div class="hs-l">Courses</div>
+          </div>
+          <div class="hs">
+            <div class="hs-n"><span class="cnt" data-to="30">0</span></div>
+            <div class="hs-l">Max/Batch</div>
+          </div>
+          <div class="hs">
+            <div class="hs-n"><span class="cnt" data-to="100">0</span>%</div>
+            <div class="hs-l">Practical</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="phone-scene" id="phoneScene">
+          <div class="ph-halo"></div>
+          <div class="ph-body">
+            <div class="ph-notch"></div>
+            <div class="ph-screen">
+              <div class="phs-top">
+                <span class="phs-handle">@creator_craft_media</span>
+                <span class="phs-live">● LIVE</span>
+              </div>
+              <div class="phs-title">🎬 CINEMATIC REEL</div>
+              <div class="phs-views">👁 2.4M views</div>
+              <div class="phs-bar">
+                <div class="phs-fill"></div>
+              </div>
+              <div class="phs-likes">❤️ 84K &nbsp; 💬 1.2K</div>
+            </div>
+          </div>
+          <div class="ph-ring pr1"></div>
+          <div class="ph-ring pr2"></div>
+        </div>
+        <div class="fc c1">🎯 ₹50K–2L/month</div>
+        <div class="fc c2">⚡ 8 Days Only</div>
+        <div class="fc c3">📜 Certificate</div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-cue">
+      <div class="sc-line"></div>
+      <span>Scroll</span>
+    </a>
+  </section>
+
+  <div class="glow-divider gd-vi"></div>
+  <!-- ══════════ MARQUEE ══════════ -->
+  <div class="mq-wrap">
+    <div class="mq-track">
+      <span>Cinematic Shoot Mastery</span><b>✦</b>
+      <span>Pro-Level Editing</span><b>✦</b>
+      <span>AI Film-Making</span><b>✦</b>
+      <span>Canva &amp; Digital Marketing</span><b>✦</b>
+      <span>Content Creator Program</span><b>✦</b>
+      <span>Zero Equipment Needed</span><b>✦</b>
+      <span>Personal Mentorship</span><b>✦</b>
+      <span>Real Earning Potential</span><b>✦</b>
+      <span>Nellore's #1 Creator Lab</span><b>✦</b>
+      <span>Cinematic Shoot Mastery</span><b>✦</b>
+      <span>Pro-Level Editing</span><b>✦</b>
+      <span>AI Film-Making</span><b>✦</b>
+      <span>Canva &amp; Digital Marketing</span><b>✦</b>
+      <span>Content Creator Program</span><b>✦</b>
+      <span>Zero Equipment Needed</span><b>✦</b>
+      <span>Personal Mentorship</span><b>✦</b>
+      <span>Real Earning Potential</span><b>✦</b>
+      <span>Nellore's #1 Creator Lab</span><b>✦</b>
+    </div>
+  </div>
+
+
+  <div class="glow-divider gd-am"></div>
+
+  <!-- ══════════ TOOLS ORBIT ══════════ -->
+  <section class="tools-sec">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Our Toolkit</div>
+        <h2 class="sh2">Tools We <span class="bt">Train On</span></h2>
+        <p class="sec-sub">Industry-standard software taught hands-on — the exact tools used by professionals every day.
+        </p>
+      </div>
+      <div class="orbit-wrap">
+
+        <!-- Center logo -->
+        <div class="orbit-center">
+          <img src="logo.png" alt="CCM" class="orbit-logo" />
+        </div>
+
+        <!-- Sweeping arc (half-circle glow that rotates) -->
+        <svg class="orbit-sweep-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sweepGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(99,102,241,0)" />
+              <stop offset="60%" stop-color="rgba(99,102,241,0.4)" />
+              <stop offset="100%" stop-color="rgba(165,180,252,1)" />
+            </linearGradient>
+          </defs>
+          <path class="orbit-sweep-arc" d="M 250,30 A 220,220 0 0 1 250,470" fill="none" stroke="url(#sweepGrad)"
+            stroke-width="2.5" stroke-linecap="round" />
+          <circle class="orbit-sweep-dot" cx="250" cy="30" r="5" fill="#a5b4fc" filter="url(#dotGlow)" />
+          <defs>
+            <filter id="dotGlow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+        </svg>
+
+        <!-- Single ring: all 10 tools, evenly spaced 36deg apart -->
+        <div class="orbit-ring ring1">
+          <div class="t-item" style="--ang:0deg">
+            <div class="tool-icon"><svg viewBox="0 0 48 48" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="10" fill="#10a37f" />
+                <path
+                  d="M24 10c-5.523 0-10 4.477-10 10 0 1.72.437 3.338 1.203 4.752L13 38l13.248-2.203A10 10 0 1024 10z"
+                  fill="none" stroke="white" stroke-width="2.5" stroke-linejoin="round" />
+                <circle cx="24" cy="20" r="3.5" fill="white" />
+              </svg></div>
+            <span>ChatGPT</span>
+          </div>
+          <div class="t-item" style="--ang:36deg">
+            <div class="tool-icon ti-gem"><svg viewBox="0 0 48 48" width="30" height="30"
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="gemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#4285f4" />
+                    <stop offset="50%" style="stop-color:#9c27b0" />
+                    <stop offset="100%" style="stop-color:#e91e63" />
+                  </linearGradient>
+                </defs>
+                <rect width="48" height="48" rx="10" fill="#0d0d0d" />
+                <path d="M24 8 C24 8 26 18 34 24 C26 30 24 40 24 40 C24 40 22 30 14 24 C22 18 24 8 24 8Z"
+                  fill="url(#gemGrad)" />
+              </svg></div>
+            <span>Gemini</span>
+          </div>
+          <div class="t-item" style="--ang:72deg">
+            <div class="tool-icon ti-grok"><svg viewBox="0 0 48 48" width="30" height="30"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="10" fill="#111" /><text x="24" y="33" text-anchor="middle"
+                  font-size="22" font-weight="900" font-family="sans-serif" fill="white">X</text>
+              </svg></div>
+            <span>Grok</span>
+          </div>
+          <div class="t-item" style="--ang:108deg">
+            <div class="tool-icon ti-el"><svg viewBox="0 0 48 48" width="30" height="30"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="10" fill="#111" />
+                <rect x="9" y="20" width="5" height="8" rx="2.5" fill="white" opacity="0.5" />
+                <rect x="17" y="14" width="5" height="20" rx="2.5" fill="white" opacity="0.75" />
+                <rect x="25" y="10" width="5" height="28" rx="2.5" fill="white" />
+                <rect x="33" y="16" width="5" height="16" rx="2.5" fill="white" opacity="0.6" />
+              </svg></div>
+            <span>ElevenLabs</span>
+          </div>
+          <div class="t-item" style="--ang:144deg">
+            <div class="tool-icon"><svg viewBox="0 0 48 48" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="8" fill="#00005b" /><text x="24" y="32" text-anchor="middle"
+                  font-size="18" font-weight="bold" font-family="serif" fill="#9999ff">Pr</text>
+              </svg></div>
+            <span>Premiere Pro</span>
+          </div>
+          <div class="t-item" style="--ang:180deg">
+            <div class="tool-icon ti-ae"><svg viewBox="0 0 48 48" width="30" height="30"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="8" fill="#00005b" /><text x="24" y="32" text-anchor="middle"
+                  font-size="18" font-weight="bold" font-family="serif" fill="#9f9fff">Ae</text>
+              </svg></div>
+            <span>After Effects</span>
+          </div>
+          <div class="t-item" style="--ang:216deg">
+            <div class="tool-icon ti-fcp"><svg viewBox="0 0 48 48" width="30" height="30"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="8" fill="#1c1c1e" />
+                <polygon points="24,8 38,24 24,40 10,24" fill="none" stroke="#e5474b" stroke-width="2.5" />
+                <polygon points="24,14 33,24 24,34 15,24" fill="#e5474b" />
+              </svg></div>
+            <span>Final Cut Pro</span>
+          </div>
+          <div class="t-item" style="--ang:252deg">
+            <div class="tool-icon ti-dv"><svg viewBox="0 0 48 48" width="30" height="30"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="8" fill="#1a1a2e" />
+                <circle cx="24" cy="24" r="13" fill="none" stroke="#e8b400" stroke-width="2.5" />
+                <circle cx="24" cy="24" r="6" fill="#e8b400" />
+              </svg></div>
+            <span>DaVinci</span>
+          </div>
+          <div class="t-item" style="--ang:288deg">
+            <div class="tool-icon ti-cap"><svg viewBox="0 0 48 48" width="30" height="30"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="24" fill="#000" />
+                <circle cx="24" cy="24" r="14" fill="none" stroke="white" stroke-width="3" />
+                <circle cx="24" cy="24" r="5" fill="white" />
+                <line x1="24" y1="10" x2="24" y2="4" stroke="white" stroke-width="3" stroke-linecap="round" />
+              </svg></div>
+            <span>CapCut</span>
+          </div>
+          <div class="t-item" style="--ang:324deg">
+            <div class="tool-icon ti-whisk"><svg viewBox="0 0 48 48" width="30" height="30"
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="whiskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ff6b6b" />
+                    <stop offset="100%" style="stop-color:#ffd93d" />
+                  </linearGradient>
+                </defs>
+                <rect width="48" height="48" rx="10" fill="#0d0d0d" />
+                <line x1="24" y1="24" x2="24" y2="10" stroke="url(#whiskGrad)" stroke-width="2.5"
+                  stroke-linecap="round" />
+                <circle cx="24" cy="24" r="4" fill="url(#whiskGrad)" />
+              </svg></div>
+            <span>Whisk AI</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider gd-cyan"></div>
+  <!-- ══════════ ABOUT ══════════ -->
+  <section class="section about-sec" id="about">
+    <div class="container">
+      <div class="two-col">
+        <div class="col reveal">
+          <div class="eyebrow">About CCM</div>
+          <h2 class="sh2">Nellore's First<br /><span class="bt">Creator Training Lab</span></h2>
+          <p class="bp">Creator Craft Media is Nellore's first Professional Content Creation &amp; AI Film-Making
+            Creator Training Lab — built by creators who work with Top 50+ Brands.</p>
+          <p class="bp">We believe your mobile phone is your most powerful tool. No expensive camera needed — just the
+            right training, mentorship, and mindset.</p>
+          <div class="info-list">
+            <div class="ir"><span>📍</span><span>D.No.26-12-366/1, Sri Guru Towers, 2nd Floor, Beside Hanuman Statue, BV
+                Nagar Mini Bypass Road, Nellore</span></div>
+            <div class="ir"><span>📞</span><a href="tel:9700505046">9700505046</a></div>
+            <div class="ir"><span>📧</span><a
+                href="mailto:creatorcraftmedia.in@gmail.com">creatorcraftmedia.in@gmail.com</a></div>
+            <div class="ir"><span>🌐</span><a href="https://www.creatorcraftmedia.com"
+                target="_blank">www.creatorcraftmedia.com</a></div>
+            <div class="ir"><span>📸</span><a href="https://instagram.com/creator_craft_media"
+                target="_blank">@creator_craft_media</a></div>
+          </div>
+        </div>
+        <div class="col reveal">
+          <div class="why-grid">
+            <div class="wt"><span class="wi">📱</span>
+              <h2>Zero Equipment</h2>
+              <p>Your mobile is all you need. No camera investment required.</p>
+            </div>
+            <div class="wt"><span class="wi">🎓</span>
+              <h2>Personal Mentorship</h2>
+              <p>Max 30 students per batch. Direct mentor access &amp; personal feedback.</p>
+            </div>
+            <div class="wt"><span class="wi">💰</span>
+              <h2>Real Earning</h2>
+              <p>Content creators earn ₹50K–2L/month. Wedding videographers ₹50K–3L/month.</p>
+            </div>
+            <div class="wt"><span class="wi">🤖</span>
+              <h2>AI Future-Ready</h2>
+              <p>Only institute in Nellore with AI Video Tools — Higgsfield, Runway, Kling.</p>
+            </div>
+            <div class="wt wt-wide"><span class="wi">📜</span>
+              <h2>Certificate + Portfolio + Real-Time Shoots</h2>
+              <p>Get certified with a real portfolio — not just theory — to show clients and employers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider gd-rose"></div>
+  <!-- ══════════ CO-FOUNDERS ══════════ -->
+  <section class="section founders-sec" id="founders">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Meet The Team</div>
+        <h2 class="sh2">🚀 Co-Founders of <span class="bt">Creator Craft Media</span></h2>
+        <p class="sec-sub">Built on creativity, strategy, and next-gen technology — led by passionate experts who bring
+          vision, execution, and innovation together.</p>
+      </div>
+
+      <div class="founder-card reveal">
+        <div class="founder-img-wrap">
+          <div class="founder-img-frame">
+            <img src="founder-akhila.png" alt="Akhila Gangapatnam" class="founder-img" />
+            <div class="founder-img-glow"></div>
+          </div>
+        </div>
+        <div class="founder-info">
+          <div class="founder-emoji">🎬</div>
+          <h3 class="founder-name">Akhila Gangapatnam</h3>
+          <div class="founder-role">Co-Founder · Editing &amp; Training Expert</div>
+          <p class="founder-bio">Akhila is the creative backbone of Creator Craft Media. With strong expertise in
+            professional video editing and hands-on training, she transforms raw footage into powerful visual stories.
+          </p>
+          <div class="founder-spec-label">She specializes in</div>
+          <div class="founder-skills">
+            <span>🎬 Advanced Video Editing</span>
+            <span>🎥 Cinematic Content Creation</span>
+            <span>✍️ Creative Storytelling</span>
+            <span>🏫 Media Training Workshops</span>
+          </div>
+          <p class="founder-quote">Her passion lies in empowering aspiring creators with real-time skills and industry
+            knowledge.</p>
+        </div>
+      </div>
+
+      <div class="founder-card founder-card-rev reveal">
+        <div class="founder-img-wrap">
+          <div class="founder-img-frame">
+            <img src="founder-hemanth.png" alt="Peta Hemanth Prasad" class="founder-img" />
+            <div class="founder-img-glow"></div>
+          </div>
+        </div>
+        <div class="founder-info">
+          <div class="founder-emoji">📈</div>
+          <h3 class="founder-name">Peta Hemanth Prasad</h3>
+          <div class="founder-role">Co-Founder · Marketing &amp; Digital Strategy Expert</div>
+          <p class="founder-bio">Hemanth is the strategic force behind the brand's growth and positioning. With deep
+            expertise in marketing, administration, and digital strategy, he ensures that creativity meets results.</p>
+          <div class="founder-spec-label">He specializes in</div>
+          <div class="founder-skills">
+            <span>📊 Brand Strategy &amp; Positioning</span>
+            <span>📱 Social Media Growth &amp; Management</span>
+            <span>📣 Digital Marketing Campaigns</span>
+            <span>⚙️ Business Administration &amp; Scaling</span>
+          </div>
+          <p class="founder-quote">His mission is to help brands not just create content — but convert content into
+            impact and revenue.</p>
+        </div>
+      </div>
+
+      <div class="together-strip reveal">
+        <div class="ts-icon">✨</div>
+        <div class="ts-text">
+          <h3>Together, They Build More Than Content</h3>
+          <p>The co-founders combine <span class="bt">Creativity</span>, <span class="bt">Strategy</span>, and <span
+              class="bt">Technology</span> to help creators, brands, and businesses thrive in the digital world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="glow-divider gd-am"></div>
+  <!-- ══════════ COURSES ══════════ -->
+  <section class="section courses-sec" id="courses">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Our Courses</div>
+        <h2 class="sh2">Choose Your <span class="bt">Path to Success</span></h2>
+        <p class="sec-sub">Offline Training · Limited Seats · 8 Days Hands-On · Certificate Included</p>
+      </div>
+
+            <div class="course-grid">
+        <!-- Course 1 -->
+        <div class="cc reveal">
+          <div class="cc-bg-glow"></div>
+          <div class="cc-num">01</div>
+          <div class="cc-top-bar">
+            <div class="cc-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17\"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+            </div>
+            <div class="cc-badge">20% OFF</div>
+          </div>
+          <div class="cc-content">
+            <h3 class="cc-title">Cinematic Shoot Mastery</h3>
+            <p class="cc-sub">iPhone Cinematography</p>
+            <ul class="cc-points">
+              <li>Pro-level iPhone shooting techniques</li>
+              <li>Gimbal handling &amp; cinematic transitions</li>
+              <li>Lighting setup &amp; moodboard creation</li>
+              <li>Viral reel scripting &amp; storytelling</li>
+              <li>Live on-location practical sessions</li>
+            </ul>
+          </div>
+          <div class="cc-foot">
+            <div class="cc-price-wrap">
+              <div class="cc-price"><span class="cc-now">₹9,999</span><span class="cc-was">₹11,999</span></div>
+              <div class="cc-meta"><span>⏱ 8 Days</span><span>📍 Offline</span></div>
+            </div>
+            <a href="https://wa.me/919700505046?text=Hi!%20I'm%20interested%20in%20the%20*Cinematic%20Shoot%20Mastery*%20course." target="_blank" class="cc-enroll">Enroll Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="cc reveal">
+          <div class="cc-bg-glow"></div>
+          <div class="cc-num">02</div>
+          <div class="cc-top-bar">
+            <div class="cc-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
+            </div>
+            <div class="cc-badge">20% OFF</div>
+          </div>
+          <div class="cc-content">
+            <h3 class="cc-title">Pro-Level Editing Mastery</h3>
+            <p class="cc-sub">CapCut &amp; Professional Tools</p>
+            <ul class="cc-points">
+              <li>Color grading &amp; cinematic effects</li>
+              <li>Viral reel editing formulas</li>
+              <li>Beat-synced transitions</li>
+              <li>YouTube &amp; short-form optimization</li>
+              <li>Build a professional editing portfolio</li>
+            </ul>
+          </div>
+          <div class="cc-foot">
+            <div class="cc-price-wrap">
+              <div class="cc-price"><span class="cc-now">₹7,999</span><span class="cc-was">₹9,999</span></div>
+              <div class="cc-meta"><span>⏱ 8 Days</span><span>📍 Offline</span></div>
+            </div>
+            <a href="https://wa.me/919700505046?text=Hi!%20I'm%20interested%20in%20the%20*Pro-Level%20Editing%20Mastery*%20course." target="_blank" class="cc-enroll">Enroll Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="cc reveal">
+          <div class="cc-bg-glow"></div>
+          <div class="cc-num">03</div>
+          <div class="cc-top-bar">
+            <div class="cc-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div class="cc-badge">25% OFF</div>
+          </div>
+          <div class="cc-content">
+            <h3 class="cc-title">AI Film-Making</h3>
+            <p class="cc-sub">Future of Content Creation</p>
+            <ul class="cc-points">
+              <li>Higgsfield, Runway &amp; Kling AI tools</li>
+              <li>Text-to-video AI production</li>
+              <li>AI scripting &amp; prompting mastery</li>
+              <li>Combine real footage with AI</li>
+              <li>Build your AI video agency</li>
+            </ul>
+          </div>
+          <div class="cc-foot">
+            <div class="cc-price-wrap">
+              <div class="cc-price"><span class="cc-now">₹8,999</span><span class="cc-was">₹11,999</span></div>
+              <div class="cc-meta"><span>⏱ 8 Days</span><span>📍 Offline</span></div>
+            </div>
+            <a href="https://wa.me/919700505046?text=Hi!%20I'm%20interested%20in%20the%20*AI%20Film-Making*%20course." target="_blank" class="cc-enroll">Enroll Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          </div>
+        </div>
+
+        <!-- Course 4 -->
+        <div class="cc reveal">
+          <div class="cc-bg-glow"></div>
+          <div class="cc-num">04</div>
+          <div class="cc-top-bar">
+            <div class="cc-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            </div>
+            <div class="cc-badge">20% OFF</div>
+          </div>
+          <div class="cc-content">
+            <h3 class="cc-title">Canva &amp; Digital Marketing</h3>
+            <p class="cc-sub">Design. Promote. Earn.</p>
+            <ul class="cc-points">
+              <li>Canva design for social media</li>
+              <li>Logos, banners &amp; branding creatives</li>
+              <li>Instagram growth strategies</li>
+              <li>Facebook &amp; Instagram paid ads</li>
+              <li>Lead generation campaigns</li>
+            </ul>
+          </div>
+          <div class="cc-foot">
+            <div class="cc-price-wrap">
+              <div class="cc-price"><span class="cc-now">₹6,999</span><span class="cc-was">₹8,999</span></div>
+              <div class="cc-meta"><span>⏱ 8 Days</span><span>📍 Offline</span></div>
+            </div>
+            <a href="https://wa.me/919700505046?text=Hi!%20I'm%20interested%20in%20the%20*Canva%20%26%20Digital%20Marketing*%20course." target="_blank" class="cc-enroll">Enroll Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FLAGSHIP -->
+      <div class="flagship-card reveal">
+        <div class="fl-bg-glow"></div>
+        <div class="fl-ribbon">⭐ Best Value — 40% OFF</div>
+        <div class="fl-inner">
+          <div class="fl-left">
+            <div class="fl-num">05</div>
+            <h3 class="fl-title">The Content Creator Program</h3>
+            <p class="fl-sub">All 4 Courses + Real-Time Projects Experience</p>
+            <div class="fl-includes">
+              <span>✅ Cinematic Shoot Mastery</span>
+              <span>✅ Pro-Level Editing</span>
+              <span>✅ AI Film-Making</span>
+              <span>✅ Canva &amp; Digital Marketing</span>
+              <span>✅ Real-Time Projects</span>
+            </div>
+          </div>
+          <div class="fl-right">
+            <div class="fl-price">
+              <div class="fl-now">₹19,999</div>
+              <div class="fl-was">₹34,999</div>
+            </div>
+            <p class="fl-desc" style="color:var(--wh3); font-size:14px; margin-bottom:24px; line-height:1.6;">Become a complete professional content creator — industry-ready with portfolio, certificate, and real project experience.</p>
+            <div class="fl-meta">
+              <span>⏱ 30 Days</span>
+              <span>📍 Offline Lab</span>
+              <span>📜 Master Certificate</span>
+            </div>
+            <a href="https://wa.me/919700505046?text=Hi!%20I%20want%20to%20enroll%20in%20the%20flagship%20*Content%20Creator%20Program*%21" target="_blank" class="fl-enroll">🔥 Claim Offer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="glow-divider gd-vi"></div>
+  <!-- ══════════ CTA BAND ══════════ -->
+  <div class="cta-band">
+    <div class="cta-glow"></div>
+    <div class="container cta-inner">
+      <div class="cta-txt reveal">
+        <h2>Turn Your <span class="bt">Passion</span> Into A<br />Top-Earning <span class="bt">Professional
+            Career!</span></h2>
+      </div>
+      <div class="cta-acts reveal">
+        <a href="tel:9700505046" class="btn-vi big">📞 Call: 9700505046</a>
+        <a href="mailto:creatorcraftmedia.in@gmail.com" class="btn-ghost">📧 Email Us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="glow-divider gd-blue"></div>
+
+  <!-- ══════════ TESTIMONIALS ══════════ -->
+  <section class="section testimonials-sec" id="testimonials">
+    <div class="container">
+      <div class="eyebrow">What Clients Say</div>
+      <h2 class="sh2">Real Results, <span class="bt">Real Stories</span></h2>
+
+      <div class="testimonials-grid">
+
+        <!-- Card 1 -->
+        <div class="tcard reveal">
+          <div class="tcard-stars">★★★★★</div>
+          <p class="tcard-quote">&ldquo;Creator Craft Media transformed our property listings with stunning walkthrough videos. Our inquiry rate increased by 60% within the first month. Their cinematic approach is truly top-notch!&rdquo;</p>
+          <div class="tcard-author">
+            <strong>Rajesh Kumar</strong>
+            <span class="tcard-role">Real Estate Developer</span>
+            <span class="tcard-loc">Nellore, AP</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="tcard reveal">
+          <div class="tcard-stars">★★★★★</div>
+          <p class="tcard-quote">&ldquo;The reels they created for our salon went viral! We gained over 5,000 new followers in just two weeks. The quality of their work is unmatched in the industry.&rdquo;</p>
+          <div class="tcard-author">
+            <strong>Priya Sharma</strong>
+            <span class="tcard-role">Salon Owner</span>
+            <span class="tcard-loc">Hyderabad, TS</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="tcard reveal">
+          <div class="tcard-stars">★★★★★</div>
+          <p class="tcard-quote">&ldquo;Professional, creative, and results-driven. Creator Craft Media helped us build a strong social media presence for our clinic. Patients now find us through Instagram reels!&rdquo;</p>
+          <div class="tcard-author">
+            <strong>Dr. Venkat Reddy</strong>
+            <span class="tcard-role">Clinic Director</span>
+            <span class="tcard-loc">Guntur, AP</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="tcard reveal">
+          <div class="tcard-stars">★★★★★</div>
+          <p class="tcard-quote">&ldquo;Their content creation skills are exceptional. Every reel they produce tells a story that resonates with our target audience. Best investment we&rsquo;ve made for our brand.&rdquo;</p>
+          <div class="tcard-author">
+            <strong>Anitha Lakshmi</strong>
+            <span class="tcard-role">Boutique Owner</span>
+            <span class="tcard-loc">Vijayawada, AP</span>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="tcard reveal">
+          <div class="tcard-stars">★★★★★</div>
+          <p class="tcard-quote">&ldquo;The food reels Creator Craft Media created for our restaurant are absolutely mouth-watering. Our online orders doubled after the campaign. Highly recommended!&rdquo;</p>
+          <div class="tcard-author">
+            <strong>Mohammed Irfan</strong>
+            <span class="tcard-role">Restaurant Owner</span>
+            <span class="tcard-loc">Nellore, AP</span>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="tcard reveal">
+          <div class="tcard-stars">★★★★★</div>
+          <p class="tcard-quote">&ldquo;Our pre-wedding reel was like a mini movie! Everyone at the wedding kept talking about it. Hemanth and his team captured our love story beautifully. Forever grateful!&rdquo;</p>
+          <div class="tcard-author">
+            <strong>Sneha &amp; Arun</strong>
+            <span class="tcard-role">Pre-wedding Clients</span>
+            <span class="tcard-loc">Tirupati, AP</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider gd-cyan"></div>
+
+  <!-- ══════════ CONTACT ══════════ -->
+  <section class="section contact-sec" id="contact">
+    <div class="container">
+      <div class="two-col">
+        <div class="col reveal">
+          <div class="eyebrow">Get In Touch</div>
+          <h2 class="sh2">Enroll Today —<br /><span class="bt">Limited Seats!</span></h2>
+          <div class="ci-cards">
+            <div class="ci">
+              <div class="ci-i">📍</div>
+              <div><strong>Office</strong>
+                <p>D.No.26-12-366/1, Sri Guru Towers, 2nd Floor, Beside Hanuman Statue, BV Nagar Mini Bypass Road,
+                  Nellore</p>
+              </div>
+            </div>
+            <div class="ci">
+              <div class="ci-i">📞</div>
+              <div><strong>Phone / WhatsApp</strong>
+                <p><a href="tel:9700505046">9700505046</a></p>
+              </div>
+            </div>
+            <div class="ci">
+              <div class="ci-i">📧</div>
+              <div><strong>Email</strong>
+                <p><a href="mailto:creatorcraftmedia.in@gmail.com">creatorcraftmedia.in@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="ci">
+              <div class="ci-i">📸</div>
+              <div><strong>Instagram</strong>
+                <p><a href="https://instagram.com/creator_craft_media" target="_blank">@creator_craft_media</a></p>
+              </div>
+            </div>
+            <div class="ci">
+              <div class="ci-i">🌐</div>
+              <div><strong>Website</strong>
+                <p><a href="https://www.creatorcraftmedia.com" target="_blank">www.creatorcraftmedia.com</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col reveal">
+          <!-- FORM: sends to WhatsApp -->
+          <form class="cform" id="cForm">
+            <h3 class="form-title">Send Us a Message</h3>
+            <div class="frow">
+              <div class="fg"><label>Name</label><input type="text" id="fname" placeholder="Full Name" required /></div>
+              <div class="fg"><label>Phone</label><input type="tel" id="fphone" placeholder="WhatsApp Number"
+                  required /></div>
+            </div>
+            <div class="fg">
+              <label>Course Interested In</label>
+              <select id="fcourse">
+                <option value="">Select a Course…</option>
+                <option>01 — Cinematic Shoot Mastery (₹9,999)</option>
+                <option>02 — Pro-Level Editing Mastery (₹7,999)</option>
+                <option>03 — AI Film-Making (₹8,999)</option>
+                <option>04 — Canva &amp; Digital Marketing (₹6,999)</option>
+                <option>05 — The Content Creator Program (₹19,999) ⭐</option>
+              </select>
+            </div>
+            <div class="fg"><label>Message</label><textarea id="fmsg" rows="4"
+                placeholder="Tell us about your goals…"></textarea></div>
+            <button type="submit" class="btn-vi fw">Send via WhatsApp 💬</button>
+            <p class="form-note">Clicking will open WhatsApp with your details pre-filled.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="container ft-top">
+      <div class="ft-brand">
+        <img src="logo.png" alt="Creator Craft Media" class="ft-logo" />
+        <p>Nellore's First Professional Content Creation &amp; AI Film-Making Creator Training Lab. Turn your Mobile
+          into a Career.</p>
+        <a href="https://wa.me/919700505046" target="_blank" class="ft-wa">💬 WhatsApp Us</a>
+      </div>
+      <div class="ft-cols">
+        <div class="ftc">
+          <h5>Courses</h5>
+          <a href="#courses">Cinematic Shoot Mastery</a>
+          <a href="#courses">Pro-Level Editing Mastery</a>
+          <a href="#courses">AI Film-Making</a>
+          <a href="#courses">Canva &amp; Digital Marketing</a>
+          <a href="#courses">Content Creator Program ⭐</a>
+        </div>
+        <div class="ftc">
+          <h5>Company</h5>
+          <a href="#about">About Us</a>
+          <a href="#founders">Our Team</a>
+          <a href="services.html">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="ftc">
+          <h5>Contact</h5>
+          <a href="tel:9700505046">📞 9700505046</a>
+          <a href="mailto:creatorcraftmedia.in@gmail.com">📧 creatorcraftmedia.in@gmail.com</a>
+          <a href="https://www.creatorcraftmedia.com" target="_blank">🌐 www.creatorcraftmedia.com</a>
+          <span class="ft-hours">🕒 9AM – 8PM (Sun Holiday)</span>
+
+          <h5 style="margin-top: 32px;">Follow Us</h5>
+          <div class="ft-social">
+            <a href="https://instagram.com/creator_craft_media" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="#" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+            <a href="#" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ft-btm">
+      <div class="container ft-btm-row">
+        <span>© 2025 Creator Craft Media. All Rights Reserved.</span>
+        <a href="tel:9700505046" class="ft-enroll">LIMITED SEATS — ENROLL NOW</a>
+        <p> made with ❤️ BY <img src="webrogs-logo.png" alt="Webrogs" class="ft-webrogs" /> Webrogs</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
