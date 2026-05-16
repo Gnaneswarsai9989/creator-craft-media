@@ -48,7 +48,7 @@
   --ez2: cubic-bezier(0.4, 0, 0.2, 1);
   --t:   0.28s;
 
-  --nav-h: 100px;
+  --nav-h: 72px;
   --r:  14px;
   --r2: 20px;
   --section-gap: 120px;
@@ -3362,7 +3362,7 @@ body.mob-nav-open { overflow: hidden; }
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
   :root {
-    --nav-h: 100px;       /* increased from 72px — adds gap below header */
+    --nav-h: 72px;       /* restored to 72px to reduce gap in header */
     --section-gap: 80px;
   }
 
