@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonials — Creator Craft Media</title>
+  <meta name="description" content="Read what our clients say about Creator Craft Media's services." />
+  <link rel="icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page {
+      padding-top: calc(var(--nav-h) + 40px);
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--fh);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: .04em;
+      transition: gap var(--t);
+    }
+
+    .nav-back:hover {
+      gap: 12px;
+    }
+
+    .nav-back span {
+      font-size: 18px;
+    }
+
+    .svc-hero {
+      text-align: center;
+      padding: 60px 0 72px;
+      position: relative;
+    }
+
+    .svc-hero .eyebrow {
+      display: inline-block;
+      font-family: var(--fh);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(56, 189, 248, 0.08);
+      padding: 5px 18px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
+
+    .svc-hero h1 {
+      font-family: var(--fh);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800;
+      color: var(--wh);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .svc-hero h1 span {
+      color: var(--cyan);
+    }
+
+    .svc-hero p {
+      font-size: 1.05rem;
+      color: var(--wh3);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .testimonials-sec {
+      padding: 40px 0 100px;
+    }
+
+    /* FIX: Force any elements with 'reveal' to be visible, 
+       otherwise pasted code will be invisible */
+    .reveal,
+    .tcard.reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+
+    /* Animated Glowing Border Wrapper */
+    .video-card-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      /* Increased size */
+      height: 580px;
+      /* Increased height */
+      border-radius: 20px;
+      padding: 3px;
+      /* Border thickness */
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.25);
+      z-index: 1;
+      /* Create stacking context */
+    }
+
+    .video-card-wrap::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent 0%, var(--cyan) 25%, var(--vi) 50%, transparent 60%);
+      animation: spin 4s linear infinite;
+      z-index: -1;
+      /* Put behind inner card */
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Inner card */
+    .video-card {
+      position: relative;
+      padding: 0;
+      background: #000;
+      border-radius: 17px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+      display: block;
+      /* Important: Block display prevents Instagram iframe from collapsing to blank */
+      z-index: 1;
+    }
+
+    /* Hide scrollbar for video cards but keep them scrollable */
+    .video-card::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .video-card::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.3);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <header class="nav">
+    <div class="nav-inner"
+      style="max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 100%; display: flex; align-items: center; justify-content: space-between;">
+      <a href="index.html" class="nav-brand" style="display: flex; align-items: center;">
+        <img src="logo.png" alt="Creator Craft Media" style="height: 52px; width: auto; object-fit: contain;" />
+      </a>
+      <a href="index.html" class="nav-back">
+        <span>←</span> Back to Home
+      </a>
+    </div>
+  </header>
+
+  <div class="page">
+    <section class="svc-hero">
+      <div class="container">
+        <div class="eyebrow">Client Success Stories</div>
+        <h1>Real Results, <br /><span>Real Stories</span></h1>
+        <p>See how we’ve helped brands, businesses, and creators achieve incredible results through our cinematic
+          content and strategic marketing.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         VIDEO TESTIMONIALS (INSTAGRAM REELS)
+    ══════════════════════════════════ -->
+    <section class="section testimonials-sec" style="padding-top: 0;">
+      <div class="container">
+        <!-- Flex container for perfectly neat centering (supports any number of videos) -->
+        <div class="video-grid"
+          style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-bottom: 20px;">
+
+          <!-- Video 1 -->
+          <div class="video-card-wrap">
+            <div class="video-card">
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DXwi5l9IMe0/?theme=dark"
+                data-instgrm-version="14"
+                style="background:#000; border:0; margin: 0; padding:0; width:100%; min-width:100%; max-width:100%;">
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="video-card-wrap">
+            <div class="video-card">
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DXwwSPAo1Mw/?theme=dark"
+                data-instgrm-version="14"
+                style="background:#000; border:0; margin: 0; padding:0; width:100%; min-width:100%; max-width:100%;">
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="video-card-wrap">
+            <div class="video-card">
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DYTyzmFSxrF/?igsh=Nmh2MGJzYmdlOXV3"
+                data-instgrm-version="14"
+                style="background:#000; border:0; margin: 0; padding:0; width:100%; min-width:100%; max-width:100%;">
+              </blockquote>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+        <!-- ══════════════════════════════════
+             TEXT TESTIMONIALS
+        ══════════════════════════════════ -->
+        <h2 style="font-family: var(--fh); font-size: 2rem; color: #fff; text-align: center; margin: 80px 0 40px;">More
+          <span style="color: var(--cyan);">Client Feedback</span>
+        </h2>
+
+        <div class="testimonials-grid">
+          <div class="tcard">
+            <div class="tcard-stars">★★★★★</div>
+            <p class="tcard-quote">&ldquo;Creator Craft Media transformed our property listings with stunning
+              walkthrough videos. Our inquiry rate increased by 60% within the first month. Their cinematic approach is
+              truly top-notch!&rdquo;</p>
+            <div class="tcard-author">
+              <strong>Rajesh Kumar</strong>
+              <span class="tcard-role">Real Estate Developer</span>
+              <span class="tcard-loc">Nellore, AP</span>
+            </div>
+          </div>
+
+          <div class="tcard">
+            <div class="tcard-stars">★★★★★</div>
+            <p class="tcard-quote">&ldquo;The reels they created for our salon went viral! We gained over 5,000 new
+              followers in just two weeks. The quality of their work is unmatched in the industry.&rdquo;</p>
+            <div class="tcard-author">
+              <strong>Priya Sharma</strong>
+              <span class="tcard-role">Salon Owner</span>
+              <span class="tcard-loc">Hyderabad, TS</span>
+            </div>
+          </div>
+
+          <div class="tcard">
+            <div class="tcard-stars">★★★★★</div>
+            <p class="tcard-quote">&ldquo;Professional, creative, and results-driven. Creator Craft Media helped us
+              build a strong social media presence for our clinic. Patients now find us through Instagram reels!&rdquo;
+            </p>
+            <div class="tcard-author">
+              <strong>Dr. Venkat Reddy</strong>
+              <span class="tcard-role">Clinic Director</span>
+              <span class="tcard-loc">Guntur, AP</span>
+            </div>
+          </div>
+
+          <div class="tcard">
+            <div class="tcard-stars">★★★★★</div>
+            <p class="tcard-quote">&ldquo;Their content creation skills are exceptional. Every reel they produce tells a
+              story that resonates with our target audience. Best investment we&rsquo;ve made for our brand.&rdquo;</p>
+            <div class="tcard-author">
+              <strong>Anitha Lakshmi</strong>
+              <span class="tcard-role">Boutique Owner</span>
+              <span class="tcard-loc">Vijayawada, AP</span>
+            </div>
+          </div>
+
+          <div class="tcard">
+            <div class="tcard-stars">★★★★★</div>
+            <p class="tcard-quote">&ldquo;The food reels Creator Craft Media created for our restaurant are absolutely
+              mouth-watering. Our online orders doubled after the campaign. Highly recommended!&rdquo;</p>
+            <div class="tcard-author">
+              <strong>Mohammed Irfan</strong>
+              <span class="tcard-role">Restaurant Owner</span>
+              <span class="tcard-loc">Nellore, AP</span>
+            </div>
+          </div>
+
+          <div class="tcard">
+            <div class="tcard-stars">★★★★★</div>
+            <p class="tcard-quote">&ldquo;Our pre-wedding reel was like a mini movie! Everyone at the wedding kept
+              talking about it. Hemanth and his team captured our love story beautifully. Forever grateful!&rdquo;</p>
+            <div class="tcard-author">
+              <strong>Sneha &amp; Arun</strong>
+              <span class="tcard-role">Pre-wedding Clients</span>
+              <span class="tcard-loc">Tirupati, AP</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- /page -->
+
+  <!-- Instagram Embed Script -->
+  <script async src="//www.instagram.com/embed.js"></script>
+
+</body>
+
+</html>

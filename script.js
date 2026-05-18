@@ -400,7 +400,7 @@ if (cForm) {
 
     const name    = (document.getElementById('fname')   || {}).value || '';
     const phone   = (document.getElementById('fphone')  || {}).value || '';
-    const course  = (document.getElementById('fcourse') || {}).value || 'Not selected';
+    const service = (document.getElementById('fservice') || {}).value || 'Not selected';
     const message = (document.getElementById('fmsg')    || {}).value || '';
 
     const text = [
@@ -408,7 +408,7 @@ if (cForm) {
       ``,
       `📝 *Name:* ${name}`,
       `📞 *Phone:* ${phone}`,
-      `🎓 *Course:* ${course}`,
+      `💼 *Service:* ${service}`,
       message ? `💬 *Message:* ${message}` : '',
       ``,
       `I'd like to know more about enrolling. Please get back to me!`
