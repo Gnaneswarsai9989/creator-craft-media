@@ -4,12 +4,7 @@
    ============================================================ */
 'use strict';
 
-/* ── PAGE LOAD FADE ── */
-document.documentElement.style.opacity = '0';
-document.documentElement.style.transition = 'opacity 0.45s ease';
-window.addEventListener('load', () => {
-  document.documentElement.style.opacity = '1';
-});
+/* ── PAGE TRANSITIONS REMOVED ── */
 
 /* ── STABLE VIEWPORT HEIGHT ── */
 /* Set once, NEVER update on resize — prevents hero reflow when mobile browser chrome shows/hides */
@@ -404,12 +399,12 @@ if (cForm) {
     const message = (document.getElementById('fmsg')    || {}).value || '';
 
     const text = [
-      `👋 Hi Creator Craft Media!`,
+      `Hi Creator Craft Media!`,
       ``,
-      `📝 *Name:* ${name}`,
-      `📞 *Phone:* ${phone}`,
-      `💼 *Service:* ${service}`,
-      message ? `💬 *Message:* ${message}` : '',
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Service: ${service}`,
+      message ? `Message: ${message}` : '',
       ``,
       `I'd like to know more about enrolling. Please get back to me!`
     ].filter(Boolean).join('\n');
@@ -423,7 +418,7 @@ if (cForm) {
     // Visual feedback
     const btn = cForm.querySelector('button[type="submit"]');
     const orig = btn.textContent;
-    btn.textContent = '✅ Opening WhatsApp…';
+    btn.textContent = 'Opening WhatsApp…';
     btn.disabled = true; btn.style.opacity = '.8';
     setTimeout(() => {
       btn.textContent = orig; btn.disabled = false; btn.style.opacity = '1';
@@ -453,3 +448,262 @@ document.body.appendChild(progBar);
 window.addEventListener('scroll', () => {
   progBar.style.width = Math.min((window.scrollY / (document.body.scrollHeight - innerHeight)) * 100, 100) + '%';
 }, { passive: true });
+
+/* ══════════════════════════════════════
+   iPHONE HOVER TILT — Magnetic 3D effect
+══════════════════════════════════════ */
+const iphScene = document.getElementById('iphScene');
+if (iphScene && !isTouch) {
+  const heroRight = iphScene.closest('.hero-right');
+  let animPaused = false;
+  let rafId = null;
+
+  heroRight.addEventListener('mouseenter', () => {
+    animPaused = true;
+    iphScene.style.animationPlayState = 'paused';
+  });
+
+  heroRight.addEventListener('mouseleave', () => {
+    animPaused = false;
+    iphScene.style.animationPlayState = 'running';
+    iphScene.style.transform = '';
+  });
+
+  heroRight.addEventListener('mousemove', e => {
+    if (!animPaused) return;
+    const rect = heroRight.getBoundingClientRect();
+    const cx   = rect.left + rect.width  / 2;
+    const cy   = rect.top  + rect.height / 2;
+    const dx   = (e.clientX - cx) / (rect.width  / 2);
+    const dy   = (e.clientY - cy) / (rect.height / 2);
+    
+    // Subtle hover offset (base angles are now explicitly set on the phones in CSS)
+    const rotX = -dy * 8;
+    const rotY = dx * 10;
+    
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      iphScene.style.transform =
+        `translate(-50%,-50%) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    });
+  });
+}
+
+/* ══════════════════════════════════════
+   iPHONE FLOATING PARTICLES CANVAS
+══════════════════════════════════════ */
+const iphCanvas = document.getElementById('iphParticles');
+if (iphCanvas) {
+  const ctx2 = iphCanvas.getContext('2d');
+  let W2, H2;
+  const setSize = () => {
+    const r = iphCanvas.parentElement.getBoundingClientRect();
+    W2 = iphCanvas.width  = r.width  + 120;
+    H2 = iphCanvas.height = r.height + 120;
+  };
+  setSize();
+  window.addEventListener('resize', setSize, { passive: true });
+
+  const PCOLS = ['rgba(224,112,32,', 'rgba(248,192,112,', 'rgba(255,140,40,'];
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x  = Math.random() * (W2 || 500);
+      this.y  = init ? Math.random() * (H2 || 600) : (H2 || 600) + 5;
+      this.r  = Math.random() * 1.8 + 0.3;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = -(Math.random() * 0.5 + 0.15);
+      this.a  = Math.random() * 0.55 + 0.1;
+      this.col = PCOLS[Math.floor(Math.random() * PCOLS.length)];
+      this.life = 1;
+      this.decay = Math.random() * 0.0015 + 0.0005;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy; this.life -= this.decay;
+      if (this.life <= 0 || this.y < -5) this.reset(false);
+    }
+    draw() {
+      ctx2.beginPath();
+      ctx2.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx2.fillStyle = this.col + (this.a * this.life) + ')';
+      ctx2.fill();
+    }
+  }
+
+  const particles = Array.from({ length: 55 }, () => new Particle());
+
+  const animParticles = () => {
+    requestAnimationFrame(animParticles);
+    ctx2.clearRect(0, 0, W2, H2);
+    particles.forEach(p => { p.update(); p.draw(); });
+  };
+  animParticles();
+}
+
+/* ══════════════════════════════════════
+   CINEMATIC SHOWCASE — Swipe / Drag / Arrows / Dots
+══════════════════════════════════════ */
+(function initShowcaseSlider() {
+  const slider = document.getElementById('showcaseSlider');
+  const dotsWrap = document.getElementById('showcaseDots');
+  const prevBtn  = document.querySelector('.showcase-prev');
+  const nextBtn  = document.querySelector('.showcase-next');
+  if (!slider) return;
+
+  const cards = () => [...slider.querySelectorAll('.video-card-wrap')];
+
+  /* ── Build dots ── */
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    cards().forEach((_, i) => {
+      const d = document.createElement('span');
+      d.className = 'showcase-dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => scrollToCard(i));
+      dotsWrap.appendChild(d);
+    });
+  }
+  buildDots();
+
+  /* ── Scroll to card by index ── */
+  function scrollToCard(idx) {
+    const c = cards()[idx];
+    if (!c) return;
+    slider.scrollTo({ left: c.offsetLeft - 40, behavior: 'smooth' });
+  }
+
+  /* ── Active dot sync ── */
+  function updateDots() {
+    if (!dotsWrap) return;
+    const mid = slider.scrollLeft + slider.clientWidth / 2;
+    let active = 0;
+    cards().forEach((c, i) => {
+      if (c.offsetLeft + c.offsetWidth / 2 < mid) active = i;
+    });
+    dotsWrap.querySelectorAll('.showcase-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === active)
+    );
+  }
+  slider.addEventListener('scroll', updateDots, { passive: true });
+
+  /* ── Arrow buttons ── */
+  const cardW = () => (cards()[0]?.offsetWidth || 300) + 24;
+  if (prevBtn) prevBtn.addEventListener('click', () =>
+    slider.scrollBy({ left: -cardW(), behavior: 'smooth' })
+  );
+  if (nextBtn) nextBtn.addEventListener('click', () =>
+    slider.scrollBy({ left: cardW(), behavior: 'smooth' })
+  );
+
+  /* ── Mouse drag-to-scroll ── */
+  let isDragging = false, startX = 0, scrollStart = 0;
+  slider.addEventListener('mousedown', e => {
+    isDragging = true;
+    startX = e.pageX;
+    scrollStart = slider.scrollLeft;
+    slider.classList.add('dragging');
+  });
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    slider.scrollLeft = scrollStart - (e.pageX - startX);
+  });
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    slider.classList.remove('dragging');
+  });
+
+  /* ── Swipe hint on load — nudge right then back ── */
+  setTimeout(() => {
+    slider.scrollBy({ left: 80, behavior: 'smooth' });
+    setTimeout(() => slider.scrollBy({ left: -80, behavior: 'smooth' }), 600);
+  }, 1200);
+})();
+
+/* ══════════════════════════════════════
+   ORBIT RING PARTICLES — bubbles rise from the ring line
+══════════════════════════════════════ */
+(function initOrbitParticles() {
+  const canvas = document.getElementById('orbitParticles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  /* Match canvas resolution to its CSS size */
+  function resize() {
+    const w = canvas.offsetWidth;
+    const h = canvas.offsetHeight;
+    canvas.width  = w * (window.devicePixelRatio || 1);
+    canvas.height = h * (window.devicePixelRatio || 1);
+    ctx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* Ring geometry — must match CSS --orbit-r: 220px and canvas = 560px */
+  const RING_R   = 220;   /* orbit ring radius in CSS px */
+  const COLORS   = ['#a5b4fc', '#818cf8', '#67e8f9', '#c4b5fd', '#e0e7ff'];
+  const MAX_P    = 35;    /* max simultaneous particles */
+
+  function cx() { return canvas.offsetWidth  / 2; }
+  function cy() { return canvas.offsetHeight / 2; }
+
+  /* Create one particle at a random point ON the ring */
+  function spawnParticle() {
+    const angle = Math.random() * Math.PI * 2;
+    return {
+      x     : cx() + RING_R * Math.cos(angle),
+      y     : cy() + RING_R * Math.sin(angle),
+      r     : 1.5 + Math.random() * 2.5,          /* radius 1.5–4px */
+      alpha : 0.7 + Math.random() * 0.3,
+      vy    : -(0.4 + Math.random() * 0.8),        /* upward speed */
+      vx    : (Math.random() - 0.5) * 0.4,         /* slight sideways drift */
+      life  : 0,
+      maxLife: 60 + Math.random() * 80,             /* frames alive */
+      color : COLORS[Math.floor(Math.random() * COLORS.length)],
+      wobble: Math.random() * Math.PI * 2,          /* wobble phase */
+    };
+  }
+
+  let particles = Array.from({ length: MAX_P }, spawnParticle);
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+
+    particles.forEach((p, i) => {
+      p.life++;
+      const progress = p.life / p.maxLife;          /* 0 → 1 over lifetime */
+
+      /* Fade in for first 20% then fade out */
+      const fadeIn  = Math.min(p.life / (p.maxLife * 0.2), 1);
+      const fadeOut = 1 - Math.max((progress - 0.6) / 0.4, 0);
+      const alpha   = p.alpha * fadeIn * fadeOut;
+
+      /* Move upward + wobble */
+      p.wobble += 0.04;
+      p.x += p.vx + Math.sin(p.wobble) * 0.3;
+      p.y += p.vy;
+
+      /* Draw glowing bubble */
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2.5);
+      grad.addColorStop(0, p.color);
+      grad.addColorStop(1, 'transparent');
+
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur  = 8;
+      ctx.fill();
+      ctx.restore();
+
+      /* Recycle when dead */
+      if (p.life >= p.maxLife) particles[i] = spawnParticle();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();

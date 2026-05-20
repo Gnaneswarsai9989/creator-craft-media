@@ -121,16 +121,38 @@
     .svc-block-inner.reverse { direction: rtl; }
     .svc-block-inner.reverse > * { direction: ltr; }
 
-    /* Image side */
+    /* Image side with Glowing Border */
     .svc-img-wrap {
-      border-radius: 20px;
+      border-radius: 22px;
+      padding: 3px; /* Border thickness */
       overflow: hidden;
       aspect-ratio: 4/3;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6),
-                  0 0 0 1px rgba(99,102,241,0.15);
       position: relative;
+      z-index: 1;
+      cursor: pointer; /* Make it clickable */
+      animation: borderPulse 3s infinite alternate ease-in-out;
     }
-    .svc-img-wrap img { transition: transform 0.6s var(--ez); }
+    .svc-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent 0%, var(--cyan) 25%, var(--vi) 50%, transparent 60%);
+      animation: spin 3s linear infinite;
+      z-index: -2;
+    }
+    .svc-img-wrap::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px; right: 3px; bottom: 3px;
+      background: var(--ink2);
+      border-radius: 19px;
+      z-index: -1;
+    }
+    .svc-img-wrap img { 
+      border-radius: 19px;
+      transition: transform 0.6s var(--ez); 
+    }
     .svc-img-wrap:hover img { transform: scale(1.04); }
 
     /* Text side */
@@ -240,20 +262,51 @@
       gap: 16px;
     }
     .img-card {
-      background: var(--ink2);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
+      position: relative;
+      border-radius: 18px;
+      padding: 2px;
       overflow: hidden;
-      transition: transform var(--t), border-color var(--t), box-shadow var(--t);
+      transition: transform var(--t);
       cursor: pointer;
+      z-index: 1;
+      animation: borderPulse 3s infinite alternate ease-in-out;
+    }
+    .img-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent 0%, var(--cyan) 25%, var(--vi) 50%, transparent 60%);
+      animation: spin 3.5s linear infinite;
+      z-index: -2;
+      opacity: 0.7;
+      transition: opacity var(--t);
+    }
+    .img-card:hover::before {
+      opacity: 1;
+      animation: spin 1.5s linear infinite;
+    }
+    .img-card::after {
+      content: '';
+      position: absolute;
+      top: 2px; left: 2px; right: 2px; bottom: 2px;
+      background: var(--ink2);
+      border-radius: 16px;
+      z-index: -1;
     }
     .img-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(56,189,248,0.3);
-      box-shadow: 0 12px 36px rgba(56,189,248,0.12);
+      transform: translateY(-6px);
     }
+    
+    @keyframes borderPulse {
+      0% { box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 10px rgba(56, 189, 248, 0.1); }
+      100% { box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 25px rgba(56, 189, 248, 0.4); }
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
     .img-card-img {
       width: 100%; aspect-ratio: 4/3; overflow: hidden;
+      border-radius: 16px 16px 0 0;
     }
     .img-card-img img {
       width: 100%; height: 100%; object-fit: cover;
@@ -319,6 +372,168 @@
       .img-card.wide { grid-column: auto; }
       .svc-chips { grid-template-columns: 1fr; }
       .nav-inner { padding: 0 20px; }
+    }
+    
+    /* ── PREMIUM INQUIRY MODAL ── */
+    .svc-modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(7, 7, 15, 0.85);
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .svc-modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    /* Glowing Border Wrapper for the Modal */
+    .svc-modal-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      margin: 20px;
+      padding: 3px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 40px rgba(56, 189, 248, 0.25);
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10000;
+    }
+    
+    .svc-modal-overlay.open .svc-modal-wrap {
+      transform: scale(1) translateY(0);
+    }
+    
+    .svc-modal-wrap::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent 0%, var(--cyan) 25%, var(--vi) 50%, transparent 60%);
+      animation: spin 3s linear infinite;
+      z-index: -2;
+    }
+    
+    .svc-modal-card {
+      background: var(--ink1);
+      border-radius: 21px;
+      padding: 36px 32px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .svc-modal-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--wh2);
+      font-size: 18px;
+      cursor: pointer;
+      transition: background var(--t), transform var(--t), border-color var(--t);
+    }
+    .svc-modal-close:hover {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: rgba(239, 68, 68, 0.4);
+      transform: rotate(90deg);
+      color: #ef4444;
+    }
+    
+    .svc-modal-card h3 {
+      font-family: var(--fh);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--wh);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    
+    .svc-modal-badge {
+      display: inline-block;
+      font-family: var(--fh);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+    
+    .svc-form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .svc-form-group label {
+      display: block;
+      font-family: var(--fh);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--wh3);
+      margin-bottom: 8px;
+    }
+    
+    .svc-form-group input, 
+    .svc-form-group textarea {
+      width: 100%;
+      background: rgba(7, 7, 15, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: var(--wh);
+      font-family: var(--fb);
+      font-size: 14px;
+      transition: border-color var(--t), box-shadow var(--t);
+    }
+    
+    .svc-form-group input:focus, 
+    .svc-form-group textarea:focus {
+      outline: none;
+      border-color: var(--cyan);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    }
+    
+    .svc-modal-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--vi), #4338ca);
+      color: #fff;
+      font-family: var(--fh);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 28px;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    
+    .svc-modal-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
     }
   </style>
 </head>
@@ -566,5 +781,127 @@
 
   </div><!-- /page -->
 
+  <!-- ── PREMIUM INQUIRY MODAL ── -->
+  <div class="svc-modal-overlay" id="svcModal">
+    <div class="svc-modal-wrap">
+      <div class="svc-modal-card">
+        <button class="svc-modal-close" id="modalClose">&times;</button>
+        <h3>Let's Work Together</h3>
+        <div class="svc-modal-badge" id="modalBadge">Selected: Workshops & Creator Labs</div>
+        
+        <form id="svcInquiryForm">
+          <input type="hidden" id="selectedService" value="" />
+          <div class="svc-form-group">
+            <label for="clientName">Your Name</label>
+            <input type="text" id="clientName" placeholder="Enter your full name" required />
+          </div>
+          <div class="svc-form-group">
+            <label for="clientPhone">WhatsApp Number</label>
+            <input type="tel" id="clientPhone" placeholder="Enter WhatsApp phone number" required />
+          </div>
+          <div class="svc-form-group">
+            <label for="clientMsg">Project Details (Optional)</label>
+            <textarea id="clientMsg" rows="3" placeholder="Tell us about what you need..."></textarea>
+          </div>
+          <button type="submit" class="svc-modal-btn">
+            Proceed to WhatsApp 🚀
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include Global Script for Animations -->
+  <script src="script.js"></script>
+
+  <!-- Premium Modal and Redirection Script -->
+  <script>
+    const modal = document.getElementById('svcModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalBadge = document.getElementById('modalBadge');
+    const hiddenServiceInput = document.getElementById('selectedService');
+    const form = document.getElementById('svcInquiryForm');
+
+    // Open Modal with Animations when any card/image is clicked
+    document.querySelectorAll('.img-card, .svc-img-wrap').forEach(card => {
+      card.addEventListener('click', function() {
+        let serviceName = '';
+        
+        // Find service name
+        const h4 = this.querySelector('h4');
+        if (h4) {
+          serviceName = h4.innerText;
+        } else {
+          const wrapper = this.closest('.svc-block-inner');
+          if (wrapper) {
+            const h2 = wrapper.querySelector('h2');
+            if (h2) serviceName = h2.innerText.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u2600-\u27BF]/g, '').trim();
+          }
+        }
+        
+        if (!serviceName) serviceName = "your services";
+        
+        // Populate modal data
+        modalBadge.innerText = `Selected: ${serviceName}`;
+        hiddenServiceInput.value = serviceName;
+        
+        // Show Modal
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Prevent body scroll
+        
+        // Focus first field after animation completes
+        setTimeout(() => {
+          document.getElementById('clientName').focus();
+        }, 100);
+      });
+    });
+
+    // Close Modal functions
+    const closeModal = () => {
+      modal.classList.remove('open');
+      document.body.style.overflow = ''; // Restore body scroll
+      form.reset();
+    };
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    // Handle Form submission -> WhatsApp redirect
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const serviceName = hiddenServiceInput.value;
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const msg = document.getElementById('clientMsg').value.trim();
+      
+      // Build simple and professional plain-text message
+      const text = [
+        `Hi Creator Craft Media,`,
+        ``,
+        `I am interested in your ${serviceName} service.`,
+        ``,
+        `My Details:`,
+        `Name: ${name}`,
+        `Phone: ${phone}`,
+        msg ? `Message: ${msg}` : '',
+        ``,
+        `I am looking forward to collaborating with you!`
+      ].filter(Boolean).join('\n');
+      
+      const encodedText = encodeURIComponent(text);
+      
+      // Open WhatsApp in a new tab
+      window.open(`https://wa.me/919700505046?text=${encodedText}`, '_blank');
+      
+      // Close modal
+      closeModal();
+    });
+  </script>
 </body>
 </html>
