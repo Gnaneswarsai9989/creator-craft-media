@@ -1300,6 +1300,9 @@ body.mob-nav-open {
   height: 560px;
   z-index: 2;
   perspective: 1400px;
+  /* Prevent quality degradation during scroll */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* ── PARTICLES CANVAS ── */
@@ -1384,6 +1387,10 @@ body.mob-nav-open {
   animation: iph-reveal 1.5s cubic-bezier(0, 0.9, 0.3, 1) forwards;
   cursor: grab;
   z-index: 3;
+  /* Maintain high quality during scroll/drag */
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .iph-scene:active {
@@ -1516,8 +1523,8 @@ body.mob-nav-open {
   overflow: visible !important;
   box-shadow: none !important;
   border-radius: 0 !important;
-  width: 230px !important;
-  height: 470px !important;
+  width: 160px !important;
+  height: 340px !important;
 }
 
 /* Real orange iPhone back image */
@@ -1532,6 +1539,10 @@ body.mob-nav-open {
   backface-visibility: hidden;
   will-change: transform;
   filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 30px rgba(230, 100, 10, 0.3));
+  /* High quality during scroll */
+  -webkit-font-smoothing: antialiased;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Back camera island */
@@ -5284,6 +5295,10 @@ body.mob-nav-open {
   cursor: grabbing;
   scroll-snap-type: none;
   user-select: none;
+}
+
+.showcase-slider.dragging .video-card-wrap {
+  animation-play-state: paused;
 }
 .showcase-slider {
   cursor: grab;

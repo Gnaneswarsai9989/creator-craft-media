@@ -248,15 +248,16 @@ document.querySelectorAll('.cnt').forEach(el => {
 });
 
 /* ── PHONE 3D TILT ── */
-const phoneScene = document.getElementById('phoneScene');
-if (phoneScene && !isTouch) {
-  document.addEventListener('mousemove', e => {
-    const rx = ((e.clientY / innerHeight) - 0.5) * 12;
-    const ry = ((e.clientX / innerWidth) - 0.5) * 12;
-    phoneScene.style.transform = `rotateX(${-rx}deg) rotateY(${ry}deg)`;
-    phoneScene.style.transition = 'transform 0.1s ease';
-  });
-}
+// Disabled: Phone no longer rotates on mouse hover
+// const phoneScene = document.getElementById('phoneScene');
+// if (phoneScene && !isTouch) {
+//   document.addEventListener('mousemove', e => {
+//     const rx = ((e.clientY / innerHeight) - 0.5) * 12;
+//     const ry = ((e.clientX / innerWidth) - 0.5) * 12;
+//     phoneScene.style.transform = `rotateX(${-rx}deg) rotateY(${ry}deg)`;
+//     phoneScene.style.transition = 'transform 0.1s ease';
+//   });
+// }
 
 /* ── WHY TILES STAGGER ── */
 document.querySelectorAll('.wt').forEach((t, idx) => {
@@ -469,24 +470,25 @@ if (iphScene && !isTouch) {
     iphScene.style.transform = '';
   });
 
-  heroRight.addEventListener('mousemove', e => {
-    if (!animPaused) return;
-    const rect = heroRight.getBoundingClientRect();
-    const cx   = rect.left + rect.width  / 2;
-    const cy   = rect.top  + rect.height / 2;
-    const dx   = (e.clientX - cx) / (rect.width  / 2);
-    const dy   = (e.clientY - cy) / (rect.height / 2);
-    
-    // Subtle hover offset (base angles are now explicitly set on the phones in CSS)
-    const rotX = -dy * 8;
-    const rotY = dx * 10;
-    
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(() => {
-      iphScene.style.transform =
-        `translate(-50%,-50%) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-    });
-  });
+  // Disabled: Phone no longer rotates on hover
+  // heroRight.addEventListener('mousemove', e => {
+  //   if (!animPaused) return;
+  //   const rect = heroRight.getBoundingClientRect();
+  //   const cx   = rect.left + rect.width  / 2;
+  //   const cy   = rect.top  + rect.height / 2;
+  //   const dx   = (e.clientX - cx) / (rect.width  / 2);
+  //   const dy   = (e.clientY - cy) / (rect.height / 2);
+  //   
+  //   // Subtle hover offset (base angles are now explicitly set on the phones in CSS)
+  //   const rotX = -dy * 8;
+  //   const rotY = dx * 10;
+  //   
+  //   if (rafId) cancelAnimationFrame(rafId);
+  //   rafId = requestAnimationFrame(() => {
+  //     iphScene.style.transform =
+  //       `translate(-50%,-50%) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+  //   });
+  // });
 }
 
 /* ══════════════════════════════════════
