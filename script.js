@@ -1,5 +1,5 @@
 /* ============================================================
-   CREATOR CRAFT MEDIA — script.js  v5.0
+   Creative Craft Media — script.js  v5.0
    Updated: New mobile nav, WhatsApp form, improved UX
    ============================================================ */
 'use strict';
@@ -15,40 +15,6 @@
 
 /* ── DETECT TOUCH ── */
 const isTouch = window.matchMedia('(pointer: coarse)').matches;
-if (!isTouch) document.body.classList.add('hide-cursor');
-
-/* ── CUSTOM CURSOR ── */
-const cur     = document.getElementById('cur');
-const curRing = document.getElementById('curRing');
-
-if (!isTouch && cur && curRing) {
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  document.addEventListener('mouseleave', () => { cur.style.opacity = '0'; curRing.style.opacity = '0'; });
-  document.addEventListener('mouseenter', () => { cur.style.opacity = '1'; curRing.style.opacity = '1'; });
-  const tickCursor = () => {
-    rx += (mx - rx) * 0.1;
-    ry += (my - ry) * 0.1;
-    cur.style.left     = mx + 'px';
-    cur.style.top      = my + 'px';
-    curRing.style.left = rx + 'px';
-    curRing.style.top  = ry + 'px';
-    requestAnimationFrame(tickCursor);
-  };
-  tickCursor();
-  document.querySelectorAll('a, button, .svc-card, .cc, .wt, .founder-card, .cc-enroll').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cur.style.transform = 'translate(-50%,-50%) scale(2)';
-      curRing.style.width = '50px'; curRing.style.height = '50px';
-      curRing.style.borderColor = 'rgba(99,102,241,.55)';
-    });
-    el.addEventListener('mouseleave', () => {
-      cur.style.transform = 'translate(-50%,-50%) scale(1)';
-      curRing.style.width = '32px'; curRing.style.height = '32px';
-      curRing.style.borderColor = 'rgba(99,102,241,.4)';
-    });
-  });
-}
 
 /* ── CANVAS BACKGROUND ── */
 const canvas = document.getElementById('bgCanvas');
@@ -400,7 +366,7 @@ if (cForm) {
     const message = (document.getElementById('fmsg')    || {}).value || '';
 
     const text = [
-      `Hi Creator Craft Media!`,
+      `Hi Creative Craft Media!`,
       ``,
       `Name: ${name}`,
       `Phone: ${phone}`,
